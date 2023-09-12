@@ -16,29 +16,65 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Blue80,
+    onPrimary = Blue20,
+    primaryContainer = Blue30,
+    onPrimaryContainer = Blue90,
+    inversePrimary = Blue40,
+    secondary = DarkBlue80,
+    onSecondary = DarkBlue20,
+    secondaryContainer = DarkBlue30,
+    onSecondaryContainer = DarkBlue90,
+    tertiary = Yellow80,
+    onTertiary = Yellow20,
+    tertiaryContainer = Yellow30,
+    onTertiaryContainer = Yellow90,
+    error = Red80,
+    onError = Red20,
+    errorContainer = Red30,
+    onErrorContainer = Red90,
+    background = Grey10,
+    onBackground = Grey90,
+    surface = Grey10,
+    onSurface = Grey80,
+    inverseSurface = Grey90,
+    inverseOnSurface = Grey20,
+    surfaceVariant = BlueGrey30,
+    onSurfaceVariant = BlueGrey80,
+    outline = BlueGrey60
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = Blue80,
+    onPrimary = Blue20,
+    primaryContainer = Blue30,
+    onPrimaryContainer = Blue90,
+    inversePrimary = Blue40,
+    secondary = DarkBlue80,
+    onSecondary = DarkBlue20,
+    secondaryContainer = DarkBlue30,
+    onSecondaryContainer = DarkBlue90,
+    tertiary = Yellow80,
+    onTertiary = Yellow20,
+    tertiaryContainer = Yellow30,
+    onTertiaryContainer = Yellow90,
+    error = Red80,
+    onError = Red20,
+    errorContainer = Red30,
+    onErrorContainer = Red90,
+    background = Grey10,
+    onBackground = Grey90,
+    surface = Grey10,
+    onSurface = Grey80,
+    inverseSurface = Grey90,
+    inverseOnSurface = Grey20,
+    surfaceVariant = BlueGrey30,
+    onSurfaceVariant = BlueGrey80,
+    outline = BlueGrey60
 )
 
 @Composable
-fun ThemeTheme(
+fun ChatTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
@@ -64,7 +100,7 @@ fun ThemeTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
-        content = content
+        typography = ComposeTypography,
+        content = content,
     )
 }
