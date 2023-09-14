@@ -1,46 +1,54 @@
 package com.example.theme
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.activity.viewModels
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.view.WindowCompat
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.theme.ui.profile.UserInfoScreen
 import com.example.theme.ui.theme.ChatTheme
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            ChatTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+@Composable
+fun ChatApp() {
+    val navController = rememberNavController()
+    ChatNavHost(
+        navController = navController
+    )
+
+}
+
+@Composable
+fun ChatNavHost(navController: NavHostController) {
+    val activity = (LocalContext.current as Activity)
+    NavHost(navController = navController, startDestination = "home") {
+        composable("home") {
+            UserInfoScreen(
+            )
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+class MainActivity : ComponentActivity() {
+    private val viewModel: MainViewModel by viewModels()
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ChatTheme {
-        Greeting("Android")
+    @OptIn(ExperimentalMaterial3Api::class)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        setContent {
+            ChatTheme {
+                ChatApp()
+            }
+        }
     }
 }
